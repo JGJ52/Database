@@ -1,0 +1,10 @@
+name: Database
+version: '1.0'
+main: hu.jgj52.database.Database
+api-version: '1.21'
+authors: [ JGJ52 ]
+libraries:
+  - 'org.postgresql:postgresql:42.7.7'
+  - 'com.zaxxer:HikariCP:7.0.2'
+  - 'redis.clients:jedis:5.1.0'
+  - 'com.google.code.gson:gson:2.10.1'
