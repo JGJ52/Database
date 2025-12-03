@@ -9,10 +9,12 @@ public final class Database extends JavaPlugin {
 
     public static PostgreSQL postgres;
     public static Redis redis;
+    public static Database plugin;
 
     @Override
     public void onEnable() {
         // Plugin startup logic
+        plugin = this;
         getConfig().options().copyDefaults(true);
         saveConfig();
         try {
@@ -44,7 +46,7 @@ public final class Database extends JavaPlugin {
         // Plugin shutdown logic
     }
 
-    public CompletableFuture<PostgreSQL.QueryResult> asnycPostgreSQL(PostgreSQL.QueryBuilder query) {
+    public static CompletableFuture<PostgreSQL.QueryResult> asnycPostgreSQL(PostgreSQL.QueryBuilder query) {
         return CompletableFuture
                 .supplyAsync(() -> {
                     try {
@@ -53,10 +55,10 @@ public final class Database extends JavaPlugin {
                         throw new RuntimeException(e);
                     }
                 })
-                .thenApplyAsync(result -> result,r -> Bukkit.getScheduler().runTask(this, r));
+                .thenApplyAsync(result -> result,r -> Bukkit.getScheduler().runTask(plugin, r));
     }
 
-    public CompletableFuture<Redis.QueryResult> asnycRedis(Redis.QueryBuilder query) {
+    public static CompletableFuture<Redis.QueryResult> asnycRedis(Redis.QueryBuilder query) {
         return CompletableFuture
                 .supplyAsync(() -> {
                     try {
@@ -65,6 +67,6 @@ public final class Database extends JavaPlugin {
                         throw new RuntimeException(e);
                     }
                 })
-                .thenApplyAsync(result -> result,r -> Bukkit.getScheduler().runTask(this, r));
+                .thenApplyAsync(result -> result,r -> Bukkit.getScheduler().runTask(plugin, r));
     }
 }
