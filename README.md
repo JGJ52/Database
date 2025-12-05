@@ -18,7 +18,7 @@ And this to dependencies:
 <dependency>
     <groupId>hu.jgj52</groupId>
     <artifactId>database</artifactId>
-    <version>1.0</version>
+    <version>1.1</version>
     <scope>provided</scope>
 </dependency>
 ```
@@ -33,7 +33,7 @@ And this to dependencies:
   ```
   ```gradle
   dependencies {
-    compileOnly "hu.jgj52:database:1.0"
+    compileOnly "hu.jgj52:database:1.1"
   }
   ```
 - **Kotlin:**
@@ -46,6 +46,6 @@ And this to dependencies:
   ```
   ```kotlin
   dependencies {
-    compileOnly("hu.jgj52:database:1.0")
+    compileOnly("hu.jgj52:database:1.1")
   }
   ```
